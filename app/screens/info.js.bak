@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
-import { StatusBar } from 'react-native';
+import {
+  Text,
+  View,
+  StatusBar
+} from 'react-native';
+import Spinner from 'react-native-spinkit';
 
-import ProfileHeader from '../components/profile-header';
 
 const Root = styled.View`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  background-color: #f48fb1;
   height: 100%;
+`;
+
+const MyHeading = styled.Text`
+  font-size: 32;
+  color: #fff;
 `;
 
 export default class foo extends Component {
@@ -24,13 +35,7 @@ export default class foo extends Component {
     return (
       <Root>
         <StatusBar barStyle="default" />
-        <ProfileHeader
-          name="Charles Kenney"
-          bio="I love swift and javascript!"
-          repos={9090}
-          pulls={60}
-          followers={90}
-        />
+        <Spinner type={'ThreeBounce'} size={75} color="#fff" />
       </Root>
     );
   }
