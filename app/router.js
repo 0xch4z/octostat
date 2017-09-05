@@ -2,7 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import Main from './screens/main';
-import Info from './screens/info';
+import Profile from './screens/profile';
 
 export default StackNavigator({
   Main: {
@@ -12,8 +12,8 @@ export default StackNavigator({
       tabBarLabel: 'Main',
     },
   },
-  Info: {
-    screen: Info,
+  Profile: {
+    screen: Profile,
     navigationOptions: {
       tabBarLabel: 'Info',
     }

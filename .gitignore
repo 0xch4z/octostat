@@ -54,3 +54,4 @@ fastlane/screenshots
 
 # Secrets
 .env
+config.js

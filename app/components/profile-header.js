@@ -14,7 +14,7 @@ const Root = styled.View`
   border: #EFEFF2 solid;
 `;
 
-const Avatar = styled.View`
+const Avatar = styled.Image`
   height: 100px;
   width: 110px;
   border-radius: 5px;
@@ -61,7 +61,7 @@ const Bottom = styled.View`
 const ProfileHeader = (props) => (
   <Root>
     <Top>
-      <Avatar />
+      <Avatar source={{uri: props.avatarUrl}} />
       <Stats>
         <Stat key={1} metric="Repos" value={props.repos} onClick={props.onRepos} />
         <Stat key={2} metric="Pulls" value={props.pulls} onClick={props.onPulls} />
@@ -77,6 +77,7 @@ const ProfileHeader = (props) => (
 
 ProfileHeader.propTypes = {
   name: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
   bio: PropTypes.string.isRequired,
   repos: PropTypes.number.isRequired,
   pulls: PropTypes.number.isRequired,

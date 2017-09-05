@@ -50,8 +50,8 @@ export default class Main extends Component {
   };
 
   onButtonPress = () => {
-    this.props.navigation.navigate('Info', {
-      user: this.state.handle,
+    this.props.navigation.navigate('Profile', {
+      handle: this.state.handle,
     });
   };
 
