@@ -50,8 +50,9 @@ export default class Main extends Component {
   };
 
   onButtonPress = () => {
+    const { handle } = this.state;
     this.props.navigation.navigate('Profile', {
-      handle: this.state.handle,
+      handle: handle.startsWith('@') ? handle.slice(1) : handle
     });
   };
 
