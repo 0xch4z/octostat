@@ -16,6 +16,7 @@ const Value = styled.Text`
   font-size: 20;
   font-weight: 700;
   margin-bottom: 3px;
+  color: #444;
 `;
 
 const Metric = styled.Text`

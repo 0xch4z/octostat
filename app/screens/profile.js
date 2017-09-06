@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar, Text, Platform } from 'react-native';
+import Spinner from 'react-native-spinkit';
 
 import { graphql, gql } from 'react-apollo';
 
 import ProfileHeader from '../components/profile-header';
+import CenterRoot from '../components/center-root';
+import Loading from '../components/loading';
+import Error from '../components/error';
 
 const Root = styled.View`
   display: flex;
   align-items: center;
   flex-direction: column;
   height: 100%;
+  font-family: ${ Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto' };
 `;
 
 class Profile extends Component {
@@ -34,12 +39,12 @@ class Profile extends Component {
   render() {
     if (this.props.data.error) {
       console.log(this.props.data.error) ;
-      return <Text>There was an Error! ):</Text>;
+      return <Error />;
     }
 
     if (this.props.data.loading || !this.props.data.user) {
       console.log('loading: ', this.props.data);
-      return <Text>Loading...</Text>
+      return <Loading />;
     }
 
     const { user } = this.props.data;

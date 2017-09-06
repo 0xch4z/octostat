@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
-import { TOKEN } from '../config.json';
+import { TOKEN } from '../config';
 
 import Root from './router';
 
