@@ -1171,6 +1171,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.charleskenney.octostat;
 				PRODUCT_NAME = octostat;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1194,6 +1195,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.charleskenney.octostat;
 				PRODUCT_NAME = octostat;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

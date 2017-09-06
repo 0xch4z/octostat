@@ -69,16 +69,17 @@ const ProfileHeader = (props) => (
       </Stats>
     </Top>
     <Bottom>
-      <Name>{props.name}</Name>
+      <Name>{props.name ? props.name : `@${props.login}`}</Name>
       <Bio>{props.bio}</Bio>
     </Bottom>
   </Root>
 );
 
 ProfileHeader.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  login: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
-  bio: PropTypes.string.isRequired,
+  bio: PropTypes.string,
   repos: PropTypes.number.isRequired,
   pulls: PropTypes.number.isRequired,
   followers: PropTypes.number.isRequired,

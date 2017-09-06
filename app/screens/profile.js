@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { StatusBar, Text, Platform } from 'react-native';
+import { StatusBar, Text, View, Platform } from 'react-native';
 import Spinner from 'react-native-spinkit';
 
 import { graphql, gql } from 'react-apollo';
 
 import ProfileHeader from '../components/profile-header';
 import CenterRoot from '../components/center-root';
+import RepoItem from '../components/repo-item';
 import Loading from '../components/loading';
 import Error from '../components/error';
 
-const Root = styled.View`
+  /* align-items: center; */
+const Root = styled.ScrollView`
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: column; 
   height: 100%;
   font-family: ${ Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto' };
 `;
@@ -38,28 +39,40 @@ class Profile extends Component {
 
   render() {
     if (this.props.data.error) {
-      console.log(this.props.data.error) ;
+      console.log('ERR: ', this.props.data.error) ;
       return <Error />;
     }
 
     if (this.props.data.loading || !this.props.data.user) {
-      console.log('loading: ', this.props.data);
+      console.log('LOADING: ', this.props.data);
       return <Loading />;
     }
 
     const { user } = this.props.data;
 
+    const pinnedRepos = !user.pinnedRepositories.nodes ? null :
+      user.pinnedRepositories.nodes.map((repo) => (
+        <RepoItem key={repo.nameWithOwner} repo={repo} />
+      ));
+
     return (
-      <Root>
+      <Root
+        contentContainerStyle={{alignItems: 'center'}}
+        showsVerticalScrollIndicator={false}
+        horizontal={false}
+        refresh={this}
+      >
         <StatusBar barStyle="default" />
         <ProfileHeader
           name={user.name}
+          login={user.login}
           avatarUrl={user.avatarUrl}
           bio={user.bio}
           repos={user.repositories.totalCount}
           pulls={user.pullRequests.totalCount}
           followers={user.followers.totalCount}
         />
+        {pinnedRepos}
       </Root>
     )
   }
@@ -68,15 +81,39 @@ class Profile extends Component {
 const USER_QUERY = gql`
   query UserQuery ($login: String!) {
     user (login: $login) {
+      login
       name
       bio
       avatarUrl
+      pinnedRepositories (last: 6) {
+        totalCount
+        nodes {
+          nameWithOwner
+          description
+          primaryLanguage {
+            name
+          }
+          stargazers {
+            totalCount
+          }
+          forks {
+            totalCount
+          }
+        }
+      }
       repositories (last: 10) {
         totalCount
         nodes {
-          name
+          nameWithOwner
+          description
           primaryLanguage {
             name
+          }
+          stargazers {
+            totalCount
+          }
+          forks {
+            totalCount
           }
         }
       }
@@ -84,8 +121,17 @@ const USER_QUERY = gql`
         totalCount
         nodes {
           repository {
-            name
             nameWithOwner
+            description
+            primaryLanguage {
+              name
+            }
+            stargazers {
+              totalCount
+            }
+            forks {
+              totalCount
+            }
           }
         }
       }

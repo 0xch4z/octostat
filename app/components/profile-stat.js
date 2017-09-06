@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
+import format from '../utils/num-formatter';
+
 const Root = styled.TouchableOpacity`
   display: flex;
   align-items: center;
@@ -26,17 +28,16 @@ const Metric = styled.Text`
 
 const ProfileStat = ({ metric, value, onClick }) => {
   // format to thosands if needed
-  const val = value > 999 ? `${Math.round(10*(value/1000.0))/10}k` : value;
   return (
     <Root onClick={onClick}>
-      <Value>{val}</Value>
+      <Value>{format(value)}</Value>
       <Metric>{metric}</Metric>
     </Root>
   );
 };
 
 ProfileStat.propTypes = {
-  metric: PropTypes.string.isRequired,
+  metric: PropTypes.oneOf(['Repos', 'Pulls', 'Followers']).isRequired,
   value: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
