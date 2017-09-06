@@ -9,10 +9,10 @@ import { graphql, gql } from 'react-apollo';
 import ProfileHeader from '../components/profile-header';
 import CenterRoot from '../components/center-root';
 import RepoItem from '../components/repo-item';
+import NoRepos from '../components/no-repos';
 import Loading from '../components/loading';
 import Error from '../components/error';
 
-  /* align-items: center; */
 const Root = styled.ScrollView`
   display: flex;
   flex-direction: column; 
@@ -50,10 +50,19 @@ class Profile extends Component {
 
     const { user } = this.props.data;
 
-    const pinnedRepos = !user.pinnedRepositories.nodes ? null :
-      user.pinnedRepositories.nodes.map((repo) => (
+    // make pinned repo set
+    let repos;
+    if (user.pinnedRepositories.totalCount) {
+      repos = user.pinnedRepositories.nodes.map((repo) => (
         <RepoItem key={repo.nameWithOwner} repo={repo} />
       ));
+    } else if (user.repositories.totalCount) {
+      repos = user.repositories.nodes.map((repo) => (
+        <RepoItem key={repo.nameWithOwner} repo={repo} />
+      ));
+    } else {
+      repos = <NoRepos />;
+    }
 
     return (
       <Root
@@ -72,7 +81,7 @@ class Profile extends Component {
           pulls={user.pullRequests.totalCount}
           followers={user.followers.totalCount}
         />
-        {pinnedRepos}
+        {repos}
       </Root>
     )
   }
@@ -101,7 +110,7 @@ const USER_QUERY = gql`
           }
         }
       }
-      repositories (last: 10) {
+      repositories (last: 6) {
         totalCount
         nodes {
           nameWithOwner
