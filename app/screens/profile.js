@@ -4,7 +4,9 @@ import styled from 'styled-components/native';
 import { StatusBar, Text, View, Platform } from 'react-native';
 import Spinner from 'react-native-spinkit';
 
-import { graphql, gql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+
+import { GET_USER } from '../graphql/queries';
 
 import ProfileHeader from '../components/profile-header';
 import CenterRoot from '../components/center-root';
@@ -87,75 +89,7 @@ class Profile extends Component {
   }
 }
 
-const USER_QUERY = gql`
-  query UserQuery ($login: String!) {
-    user (login: $login) {
-      login
-      name
-      bio
-      avatarUrl
-      pinnedRepositories (last: 6) {
-        totalCount
-        nodes {
-          nameWithOwner
-          description
-          primaryLanguage {
-            name
-          }
-          stargazers {
-            totalCount
-          }
-          forks {
-            totalCount
-          }
-        }
-      }
-      repositories (last: 6) {
-        totalCount
-        nodes {
-          nameWithOwner
-          description
-          primaryLanguage {
-            name
-          }
-          stargazers {
-            totalCount
-          }
-          forks {
-            totalCount
-          }
-        }
-      }
-      pullRequests (last: 10) {
-        totalCount
-        nodes {
-          repository {
-            nameWithOwner
-            description
-            primaryLanguage {
-              name
-            }
-            stargazers {
-              totalCount
-            }
-            forks {
-              totalCount
-            }
-          }
-        }
-      }
-      followers (last: 10) {
-        totalCount
-        nodes {
-          login
-          avatarUrl
-        }
-      }
-    }
-  }
-`;
-
-export default graphql(USER_QUERY, {
+export default graphql(GET_USER, {
   options: (ownProps) => ({
     variables: { login: ownProps.navigation.state.params.handle }
   })
