@@ -58,7 +58,7 @@ const RepoItem = ({ repo }) => (
       { repo.primaryLanguage ? <Language lang={repo.primaryLanguage.name} /> : null }
       <Stats>
         <Stat metric="stargazers" count={repo.stargazers.totalCount} />
-        <Stat maetric="forks" count={repo.forks.totalCount} />
+        <Stat metric="forks" count={repo.forks.totalCount} />
       </Stats>
     </Bottom>
   </Root>
