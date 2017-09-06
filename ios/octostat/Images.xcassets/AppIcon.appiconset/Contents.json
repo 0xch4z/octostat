@@ -44,6 +44,18 @@
       "idiom" : "ios-marketing",
       "size" : "1024x1024",
       "scale" : "1x"
+    },
+    {
+      "filename" : "Octostat.png",
+      "unassigned" : true
+    },
+    {
+      "filename" : "Octostat@2x.png",
+      "unassigned" : true
+    },
+    {
+      "filename" : "Octostat@3x.png",
+      "unassigned" : true
     }
   ],
   "info" : {
