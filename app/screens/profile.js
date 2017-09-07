@@ -10,7 +10,7 @@ import { GET_USER } from '../graphql/queries';
 import ProfileHeader from '../components/profile-header';
 import CenterRoot from '../components/center-root';
 import RepoItem from '../components/repo-item';
-import NoRepos from '../components/no-repos';
+import NoItems from '../components/no-items';
 import Loading from '../components/loading';
 import Error from '../components/error';
 
@@ -48,6 +48,16 @@ class Profile extends Component {
     });
   }
 
+  onPullPress = () => {
+    const { navigation, data } = this.props;
+    const { nodes } = data.user.pullRequests;
+    const { handle } = navigation.state.params;
+    navigation.navigate('Pulls', {
+      pulls: nodes,
+      handle,
+    });
+  }
+
   render() {
     if (this.props.data.error) {
       console.log('ERR: ', this.props.data.error) ;
@@ -72,7 +82,7 @@ class Profile extends Component {
         <RepoItem key={repo.nameWithOwner} repo={repo} />
       ));
     } else {
-      repos = <NoRepos />;
+      repos = <NoItems what="repositories" />;
     }
 
     return (
@@ -91,6 +101,7 @@ class Profile extends Component {
           repos={user.repositories.totalCount}
           onRepos={this.onRepoPress}
           pulls={user.pullRequests.totalCount}
+          onPulls={this.onPullPress}
           followers={user.followers.totalCount}
         />
         {repos}

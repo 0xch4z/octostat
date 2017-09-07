@@ -42,9 +42,10 @@ export default gql`
       pullRequests (last: 100) {
         totalCount
         nodes {
+          title
+          merged
           repository {
             nameWithOwner
-            description
             primaryLanguage {
               name
             }
@@ -53,6 +54,13 @@ export default gql`
             }
             forks {
               totalCount
+            }
+          }
+          commits (last: 100) {
+            nodes {
+              commit {
+                message
+              }
             }
           }
         }

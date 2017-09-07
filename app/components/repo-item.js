@@ -3,18 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
 import Language from './language';
+import Root from './item-root';
 import Stat from './repo-stat';
-
-const Root = styled.View`
-  display: flex;
-  flex-direction: column;
-  min-height: 100px;
-  background: #fff;
-  border-radius: 10px;
-  width: 95%;
-  padding: 10px;
-  margin: 5px 2.5%;
-`;
 
 const Top = styled.View`
   display: flex;
@@ -54,7 +44,7 @@ const RepoItem = ({ repo }) => (
   <Root>
     <Top>
       <Name>
-        {repo.name ? name : repo.nameWithOwner}
+        {repo.nameWithOwner}
       </Name>
         {repo.description ? <Description>{repo.description}</Description> : <NoDescription>A nondescript repository.</NoDescription>}
     </Top>
@@ -68,7 +58,7 @@ const RepoItem = ({ repo }) => (
   </Root>
 );
 
-RepoItem.PropTypes = {
+RepoItem.propTypes = {
   repo: PropTypes.shape({
     nameWithOwner: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

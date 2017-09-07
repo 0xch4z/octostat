@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 const Root = styled.View`
-  flex-grow: 1;
-  display: flex;
+  display: flex !important;
+  flex-grow: 1;  
   align-items: center;
   justify-content: center;
+  ${props => props.fs ? 'height: 100%;' : '\n'}
 `;
 
 const Text = styled.Text`
@@ -13,10 +14,10 @@ const Text = styled.Text`
   color: #444;
 `;
 
-export default () => (
-  <Root>
+export default ({ what, fullscreen }) => (
+  <Root fs={fullscreen}>
     <Text>
-      User has no repositories! 😢
+      User has no {what}! 😢
     </Text>
   </Root>
 );

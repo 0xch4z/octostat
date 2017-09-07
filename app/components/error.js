@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import CenterRoot from './center-root';
+
 const ErrorImage = styled.Image`
   height: 75px;
   width: 75px;
@@ -11,8 +13,6 @@ const ErrorMessage = styled.Text`
   font-weight: 500;
   color: #444;
 `;
-
-import CenterRoot from './center-root';
 
 export default ({ errorMessage }) => (
   <CenterRoot background="#EAE9EF">

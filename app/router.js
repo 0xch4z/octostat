@@ -3,6 +3,7 @@ import { StackNavigator, Platform } from 'react-navigation';
 
 import Profile from './screens/profile';
 import Repos from './screens/repos';
+import Pulls from './screens/pulls';
 import Main from './screens/main';
 
 export default StackNavigator({
@@ -23,6 +24,12 @@ export default StackNavigator({
     screen: Repos,
     navigationOptions: {
       tabBarLabel: 'Repos',
+    },
+  },
+  Pulls: {
+    screen: Pulls,
+    navigationOptions: {
+      tabBarLabel: 'Pulls',
     },
   },
 });

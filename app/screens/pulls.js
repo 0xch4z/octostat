@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { StatusBar, Platform } from 'react-native';
 
-import RepoItem from '../components/repo-item';
+import PullItem from '../components/pull-item';
 import NoItems from '../components/no-items';
+import CenterRoot from '../components/center-root';
 
 const Root = styled.ScrollView`
   display: flex;
@@ -13,29 +14,29 @@ const Root = styled.ScrollView`
   font-family: ${ Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto' };
 `
 
-class Repos extends Component {
+class Pulls extends Component {
   static navigationOptions = ({ navigation }) => {
     const { state, setParams } = navigation;
     const { handle } = state.params;
     return {
-      title: `@${handle.toLowerCase()}'s Repos`,
+      title: `@${handle.toLowerCase()}'s Pulls`,
     };
   };
 
   render() {
     const { state } = this.props.navigation;
-    const repositories = state.params.repos;
-    const repos = repositories.length ? repositories.map(repo => (
-      <RepoItem repo={repo} />
-    )) : <NoItems fullscreen what="repos" />;
+    const pullRequests = state.params.pulls;
+    const pulls = pullRequests.length ? pullRequests.map(pull => (
+        <PullItem pull={pull} />
+      )) : <NoItems fullscreen what="pulls" />;
 
     return (
       <Root>
         <StatusBar barStyle="default" />
-        {repos}
+        {pulls}
       </Root>
     );
   }
 }
 
-export default Repos;
+export default Pulls;
