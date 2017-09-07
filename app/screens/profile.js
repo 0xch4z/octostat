@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { StatusBar, Text, View, Platform } from 'react-native';
-import Spinner from 'react-native-spinkit';
+import { StatusBar, Platform } from 'react-native';
 
 import { graphql } from 'react-apollo';
 
@@ -36,8 +35,18 @@ class Profile extends Component {
     const { handle } = state.params;
     return {
       title: `@${handle.toLowerCase()}`,
-    }
+    };
   };
+
+  onRepoPress = () => {
+    const { navigation, data } = this.props;
+    const { nodes } = data.user.repositories;
+    const { handle } = navigation.state.params;
+    navigation.navigate('Repos', {
+      repos: nodes,
+      handle,
+    });
+  }
 
   render() {
     if (this.props.data.error) {
@@ -55,11 +64,11 @@ class Profile extends Component {
     // make pinned repo set
     let repos;
     if (user.pinnedRepositories.totalCount) {
-      repos = user.pinnedRepositories.nodes.map((repo) => (
+      repos = user.pinnedRepositories.nodes.slice(0, 5).map((repo) => (
         <RepoItem key={repo.nameWithOwner} repo={repo} />
       ));
     } else if (user.repositories.totalCount) {
-      repos = user.repositories.nodes.map((repo) => (
+      repos = user.repositories.nodes.slice(0, 5).map((repo) => (
         <RepoItem key={repo.nameWithOwner} repo={repo} />
       ));
     } else {
@@ -80,6 +89,7 @@ class Profile extends Component {
           avatarUrl={user.avatarUrl}
           bio={user.bio}
           repos={user.repositories.totalCount}
+          onRepos={this.onRepoPress}
           pulls={user.pullRequests.totalCount}
           followers={user.followers.totalCount}
         />

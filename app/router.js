@@ -1,8 +1,9 @@
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, Platform } from 'react-navigation';
 
-import Main from './screens/main';
 import Profile from './screens/profile';
+import Repos from './screens/repos';
+import Main from './screens/main';
 
 export default StackNavigator({
   Main: {
@@ -15,7 +16,13 @@ export default StackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: {
-      tabBarLabel: 'Info',
+      tabBarLabel: 'Profile',
     }
-  }
+  },
+  Repos: {
+    screen: Repos,
+    navigationOptions: {
+      tabBarLabel: 'Repos',
+    },
+  },
 });

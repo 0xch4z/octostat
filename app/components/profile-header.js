@@ -34,6 +34,10 @@ const Bio = styled.Text`
   color: #555;
 `;
 
+const NoBio = Bio.extend`
+  font-style: italic;
+`;
+
 const Stats = styled.View`
   flex-grow: 1;
   height: 110px;
@@ -63,14 +67,14 @@ const ProfileHeader = (props) => (
     <Top>
       <Avatar source={{uri: props.avatarUrl}} />
       <Stats>
-        <Stat key={1} metric="Repos" value={props.repos} onClick={props.onRepos} />
-        <Stat key={2} metric="Pulls" value={props.pulls} onClick={props.onPulls} />
-        <Stat key={3} metric="Followers" value={props.followers} onClick={props.onFollowers} />
+        <Stat key={1} metric="Repos" value={props.repos} onPress={props.onRepos} />
+        <Stat key={2} metric="Pulls" value={props.pulls} onPress={props.onPulls} />
+        <Stat key={3} metric="Followers" value={props.followers} onPress={props.onFollowers} />
       </Stats>
     </Top>
     <Bottom>
       <Name>{props.name ? props.name : `@${props.login}`}</Name>
-      <Bio>{props.bio}</Bio>
+      {props.bio ? <Bio>{props.bio}</Bio> : <NoBio>A nondescript user.</NoBio>}
     </Bottom>
   </Root>
 );

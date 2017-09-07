@@ -34,6 +34,10 @@ const Description = styled.Text`
   color: #777;
 `;
 
+const NoDescription = Description.extend`
+  font-style: italic;
+`;
+
 const Bottom = styled.View`
   display: flex;
   width: 100%;
@@ -52,7 +56,7 @@ const RepoItem = ({ repo }) => (
       <Name>
         {repo.name ? name : repo.nameWithOwner}
       </Name>
-      <Description>{repo.description}</Description>
+        {repo.description ? <Description>{repo.description}</Description> : <NoDescription>A nondescript repository.</NoDescription>}
     </Top>
     <Bottom>
       { repo.primaryLanguage ? <Language lang={repo.primaryLanguage.name} /> : null }

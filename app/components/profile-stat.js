@@ -26,10 +26,10 @@ const Metric = styled.Text`
   font-weight: 300;
 `;
 
-const ProfileStat = ({ metric, value, onClick }) => {
+const ProfileStat = ({ metric, value, onPress }) => {
   // format to thosands if needed
   return (
-    <Root onClick={onClick}>
+    <Root onPress={onPress}>
       <Value>{format(value)}</Value>
       <Metric>{metric}</Metric>
     </Root>

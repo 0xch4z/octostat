@@ -23,7 +23,7 @@ export default gql`
           }
         }
       }
-      repositories (last: 6) {
+      repositories (last: 100) {
         totalCount
         nodes {
           nameWithOwner
@@ -39,7 +39,7 @@ export default gql`
           }
         }
       }
-      pullRequests (last: 10) {
+      pullRequests (last: 100) {
         totalCount
         nodes {
           repository {
@@ -57,7 +57,7 @@ export default gql`
           }
         }
       }
-      followers (last: 10) {
+      followers (last: 100) {
         totalCount
         nodes {
           login
