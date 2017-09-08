@@ -27,7 +27,7 @@ class Pulls extends Component {
     const { state } = this.props.navigation;
     const pullRequests = state.params.pulls;
     const pulls = pullRequests.length ? pullRequests.map(pull => (
-        <PullItem pull={pull} />
+        <PullItem key={pull.id} pull={pull} />
       )) : <NoItems fullscreen what="pulls" />;
 
     return (

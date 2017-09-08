@@ -27,7 +27,7 @@ class Pulls extends Component {
     const { state } = this.props.navigation;
     const $followers = state.params.followers;
     const followers = $followers.length ? $followers.map(user => (
-        <FollowerItem user={user} />
+        <FollowerItem key={user.id} user={user} />
       )) : <NoItems fullscreen what="followers" />;
 
     return (

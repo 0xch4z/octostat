@@ -10,6 +10,7 @@ export default gql`
       pinnedRepositories (last: 6) {
         totalCount
         nodes {
+          id
           nameWithOwner
           description
           primaryLanguage {
@@ -26,6 +27,7 @@ export default gql`
       repositories (last: 100) {
         totalCount
         nodes {
+          id
           nameWithOwner
           description
           primaryLanguage {
@@ -42,6 +44,7 @@ export default gql`
       pullRequests (last: 100) {
         totalCount
         nodes {
+          id
           title
           merged
           repository {
@@ -68,6 +71,7 @@ export default gql`
       followers (last: 100) {
         totalCount
         nodes {
+          id
           login
           avatarUrl
         }

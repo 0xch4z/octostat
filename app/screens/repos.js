@@ -26,7 +26,7 @@ class Repos extends Component {
     const { state } = this.props.navigation;
     const repositories = state.params.repos;
     const repos = repositories.length ? repositories.map(repo => (
-      <RepoItem repo={repo} />
+      <RepoItem key={repo.id} repo={repo} />
     )) : <NoItems fullscreen what="repos" />;
 
     return (

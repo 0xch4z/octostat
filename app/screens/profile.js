@@ -38,7 +38,7 @@ class Profile extends Component {
     };
   };
 
-  onRepoPress = () => {
+  onReposPress = () => {
     const { navigation, data } = this.props;
     const { nodes } = data.user.repositories;
     const { handle } = navigation.state.params;
@@ -48,7 +48,7 @@ class Profile extends Component {
     });
   }
 
-  onPullPress = () => {
+  onPullsPress = () => {
     const { navigation, data } = this.props;
     const { nodes } = data.user.pullRequests;
     const { handle } = navigation.state.params;
@@ -58,7 +58,7 @@ class Profile extends Component {
     });
   }
 
-  onFollowerPress = () => {
+  onFollowersPress = () => {
     const { navigation, data } = this.props;
     const { nodes } = data.user.followers;
     const { handle } = navigation.state.params;
@@ -109,11 +109,11 @@ class Profile extends Component {
           avatarUrl={user.avatarUrl}
           bio={user.bio}
           repos={user.repositories.totalCount}
-          onRepos={this.onRepoPress}
+          onRepos={this.onReposPress}
           pulls={user.pullRequests.totalCount}
-          onPulls={this.onPullPress}
+          onPulls={this.onPullsPress}
           followers={user.followers.totalCount}
-          onFollowers={this.onFollowerPress}
+          onFollowers={this.onFollowersPress}
         />
         {repos}
       </Root>
