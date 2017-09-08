@@ -5,7 +5,7 @@ import { StatusBar } from 'react-native';
 
 import Button from '../components/button';
 
-import Octocat from '../assets/octocat';
+import Octocat from '../assets/images/octocat';
 
 const Root = styled.KeyboardAvoidingView`
   display: flex;

@@ -6,8 +6,8 @@ import Language from './language';
 import Root from './item-root';
 import Stat from './repo-stat';
 
-import Repo from '../assets/repo';
-import Fork from '../assets/fork';
+import Repo from '../assets/images/repo';
+import Fork from '../assets/images/fork';
 
 const Top = styled.View`
   display: flex;

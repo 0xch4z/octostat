@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import Commit from '../assets/commit';
-import Merge from '../assets/merge';
+import Commit from '../assets/images/commit';
+import Merge from '../assets/images/merge';
 
 import Language from './language';
 import Root from './item-root';

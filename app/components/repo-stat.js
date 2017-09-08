@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-import Star from '../assets/star';
-import Fork from '../assets/fork';
+import Star from '../assets/images/star';
+import Fork from '../assets/images/fork';
 
 import format from '../utils/num-formatter';
 

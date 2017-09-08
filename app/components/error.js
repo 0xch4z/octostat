@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import Image from '../assets/error';
+import Image from '../assets/images/error';
 import Root from './center-root';
 
 const Message = styled.Text`
