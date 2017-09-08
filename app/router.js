@@ -1,6 +1,7 @@
 import React from 'react';
 import { StackNavigator, Platform } from 'react-navigation';
 
+import Followers from './screens/followers';
 import Profile from './screens/profile';
 import Repos from './screens/repos';
 import Pulls from './screens/pulls';
@@ -30,6 +31,12 @@ export default StackNavigator({
     screen: Pulls,
     navigationOptions: {
       tabBarLabel: 'Pulls',
+    },
+  },
+  Followers: {
+    screen: Followers,
+    navigationOptions: {
+      tabBarLabel: 'Followers',
     },
   },
 });

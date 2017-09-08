@@ -58,6 +58,16 @@ class Profile extends Component {
     });
   }
 
+  onFollowerPress = () => {
+    const { navigation, data } = this.props;
+    const { nodes } = data.user.followers;
+    const { handle } = navigation.state.params;
+    navigation.navigate('Followers', {
+      followers: nodes,
+      handle,
+    });
+  }
+
   render() {
     if (this.props.data.error) {
       console.log('ERR: ', this.props.data.error) ;
@@ -103,6 +113,7 @@ class Profile extends Component {
           pulls={user.pullRequests.totalCount}
           onPulls={this.onPullPress}
           followers={user.followers.totalCount}
+          onFollowers={this.onFollowerPress}
         />
         {repos}
       </Root>
