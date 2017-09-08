@@ -6,11 +6,19 @@ import Language from './language';
 import Root from './item-root';
 import Stat from './repo-stat';
 
+import Repo from '../assets/repo';
+import Fork from '../assets/fork';
+
 const Top = styled.View`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   margin-bottom: 10px;
+`;
+
+const Heading = styled.View`
+  display: flex;
+  flex-direction: row;
 `;
 
 const Name = styled.Text`
@@ -30,6 +38,8 @@ const NoDescription = Description.extend`
 
 const Bottom = styled.View`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   flex-direction: row-reverse;
 `;
@@ -43,9 +53,10 @@ const Stats = styled.View`
 const RepoItem = ({ repo }) => (
   <Root>
     <Top>
-      <Name>
-        {repo.nameWithOwner}
-      </Name>
+      <Heading>
+        {repo.isFork ? <Fork /> : <Repo />}
+        <Name>{repo.nameWithOwner}</Name>
+      </Heading>
         {repo.description ? <Description>{repo.description}</Description> : <NoDescription>A nondescript repository.</NoDescription>}
     </Top>
     <Bottom>
@@ -62,6 +73,7 @@ RepoItem.propTypes = {
   repo: PropTypes.shape({
     nameWithOwner: PropTypes.string.isRequired,
     description: PropTypes.string,
+    isFork: PropTypes.bool.isRequired,
     primaryLanguage: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }),

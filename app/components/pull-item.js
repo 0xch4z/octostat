@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
+import Commit from '../assets/commit';
+import Merge from '../assets/merge';
+
 import Language from './language';
 import Root from './item-root';
 import Stat from './repo-stat';
@@ -13,7 +16,12 @@ const Top = styled.View`
   margin-bottom: 10px;
 `;
 
-const Name = styled.Text`
+const Repo = styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
+const RepoName = styled.Text`
   font-size: 16;
   color: #444;
   margin-bottom: 2px;
@@ -24,9 +32,15 @@ const Title = styled.Text`
   color: #555;
 `;
 
-const Commit = styled.Text`
+const CommitNode = styled.View`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-left: 10;
+`;
+
+const CommitName = styled.Text`
   font-size: 12;
-  margin-left: 10px;  
   color: #666;
 `;
 
@@ -42,25 +56,34 @@ const Stats = styled.View`
   flex-grow: 1;
 `;
 
-const PullItem = ({ pull }) => (
-  <Root>
-    <Top>
-      <Name>
-        {pull.repository.nameWithOwner}
-      </Name>
-      <Title>
-        "{pull.title}"
-      </Title>
-      { pull.commits.nodes.map(({ commit }, i) => <Commit key={i}>+= {commit.message}</Commit>) }
-    </Top>
-    <Bottom>
-      { pull.repository.primaryLanguage ? <Language lang={pull.repository.primaryLanguage.name} /> : null }
-      <Stats>
-        <Stat metric="stargazers" count={pull.repository.stargazers.totalCount} />
-        <Stat metric="forks" count={pull.repository.forks.totalCount} />
-      </Stats>
-    </Bottom>
-  </Root>
-);
+const PullItem = ({ pull }) => {
+  const commits = pull.commits.nodes.map(({ commit }, index) => (
+    <CommitNode key={index}>
+      <Commit />
+      <CommitName> {commit.message}</CommitName>
+    </CommitNode>
+  ));
+  return (
+    <Root>
+      <Top>
+        <Repo>
+          <Merge merged={pull.merged} />
+          <RepoName>{pull.repository.nameWithOwner}</RepoName>
+        </Repo>
+        <Title>
+          {pull.title}
+        </Title>
+        {commits}
+      </Top>
+      <Bottom>
+        { pull.repository.primaryLanguage ? <Language lang={pull.repository.primaryLanguage.name} /> : null }
+        <Stats>
+          <Stat metric="stargazers" count={pull.repository.stargazers.totalCount} />
+          <Stat metric="forks" count={pull.repository.forks.totalCount} />
+        </Stats>
+      </Bottom>
+    </Root>
+  );
+};
 
 export default PullItem;

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
+import Svg from 'react-native-svg-uri';
 import { StatusBar } from 'react-native';
 
 import Button from '../components/button';
+
+import Octocat from '../assets/octocat';
 
 const Root = styled.KeyboardAvoidingView`
   display: flex;
@@ -27,13 +30,6 @@ const Input = styled.TextInput`
 const Heading = styled.Text`
   font-size: 32;
   color: #fff;
-`;
-
-const Image = styled.Image`
-  flex: 1;
-  resizeMode: contain;
-  max-height: 175px;
-  margin: 25px;
 `;
 
 export default class Main extends Component {
@@ -62,7 +58,7 @@ export default class Main extends Component {
         <StatusBar
           barStyle="light-content"
         />
-        <Image source={require('../assets/images/Octocat.png')} />
+        <Octocat />
         <Input
           placeholder="Github Handle"
           placeholderTextColor="#ededed"

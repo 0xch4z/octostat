@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
+import Star from '../assets/star';
+import Fork from '../assets/fork';
+
 import format from '../utils/num-formatter';
 
 const Root = styled.View`
@@ -11,22 +14,22 @@ const Root = styled.View`
 `;
 
 const Icon = styled.View`
-  height: 10px;
-  width: 10px;
+  height: 14px;
+  width: 14px;
   border-radius: 5px;
   background: red;
 `;
 
 const Count = styled.Text`
-  font-size: 10px;
-  line-height: 10px;
+  font-size: 14px;
+  line-height: 16px;
   margin-left: 2.5px;
   color: #999;
 `;
 
 const Stat = ({ metric, count }) => (
   <Root>
-    <Icon />
+    {metric === 'forks' ? <Fork /> : <Star />}
     <Count>{format(count)}</Count>
   </Root>
 );

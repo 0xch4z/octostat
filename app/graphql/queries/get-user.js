@@ -11,6 +11,7 @@ export default gql`
         totalCount
         nodes {
           id
+          isFork
           nameWithOwner
           description
           primaryLanguage {
@@ -28,6 +29,7 @@ export default gql`
         totalCount
         nodes {
           id
+          isFork
           nameWithOwner
           description
           primaryLanguage {
@@ -48,6 +50,8 @@ export default gql`
           title
           merged
           repository {
+            id
+            isFork
             nameWithOwner
             primaryLanguage {
               name

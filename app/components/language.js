@@ -6,6 +6,9 @@ import ghColorReducer from '../utils/gh-color-reducer';
 
 const Root = styled.View`
   display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
 `;
 

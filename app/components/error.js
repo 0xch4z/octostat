@@ -1,12 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import ErrorImage from '../assets/error';
 import CenterRoot from './center-root';
-
-const ErrorImage = styled.Image`
-  height: 75px;
-  width: 75px;
-`;
 
 const ErrorMessage = styled.Text`
   font-size: 20px;
@@ -16,7 +12,7 @@ const ErrorMessage = styled.Text`
 
 export default ({ errorMessage }) => (
   <CenterRoot background="#EAE9EF">
-    <ErrorImage source={require('../assets/images/Error.png')} />
+    <ErrorImage />
     <ErrorMessage>
       {errorMessage ? errorMessage : "An Error Occured!"}
     </ErrorMessage>
