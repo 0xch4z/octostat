@@ -11,8 +11,7 @@ const Root = styled.ScrollView`
   display: flex;
   flex-direction: column; 
   height: 100%;
-  font-family: ${ Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto' };
-`
+`;
 
 class Pulls extends Component {
   static navigationOptions = ({ navigation }) => {

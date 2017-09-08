@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
-const ButtonContainer = styled.TouchableOpacity`
+const Root = styled.TouchableOpacity`
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px 20px;
   max-width: 60%;
-  border: 2px #fff;
+  border-width: 2px;
+  border-color: #fff;
   border-radius: 2;
   margin: 10px;
 `;
 
-const ButtonText = styled.Text`
+const Text = styled.Text`
   font-size: 20;
   font-weight: 700;
   color: ${props => props.color};
@@ -23,15 +24,11 @@ const ButtonText = styled.Text`
 const Button = (props) => {
   const { text, color, onPress } = props;
   return (
-    <ButtonContainer
-      onPress={onPress}
-    >
-      <ButtonText
-        color={color}
-      >
+    <Root onPress={onPress}>
+      <Text color={color}>
         {text}
-      </ButtonText>
-    </ButtonContainer>
+      </Text>
+    </Root>
   );
 }
 

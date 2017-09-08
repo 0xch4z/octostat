@@ -30,16 +30,15 @@ const Avatar = styled.Image`
   height: 50px;
   width: 50px;
   border-radius: 5px;
-  border: 2px #EFEFF2;
+  border-width: 2px;
+  border-color: #EFEFF2;
 `;
 
 const Handle = styled.Text`
   font-size: 14;
 `;
 
-
 class FollowerItem extends PureComponent {
-
   onPress = () => {
     const { navigation, user } = this.props;
     navigation.navigate('Profile', {

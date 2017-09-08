@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import ErrorImage from '../assets/error';
-import CenterRoot from './center-root';
+import Image from '../assets/error';
+import Root from './center-root';
 
-const ErrorMessage = styled.Text`
+const Message = styled.Text`
   font-size: 20px;
   font-weight: 500;
   color: #444;
 `;
 
-export default ({ errorMessage }) => (
-  <CenterRoot background="#EAE9EF">
-    <ErrorImage />
-    <ErrorMessage>
-      {errorMessage ? errorMessage : "An Error Occured!"}
-    </ErrorMessage>
-  </CenterRoot>
+export default ({ message }) => (
+  <Root background="#EAE9EF">
+    <Image />
+    <Message>
+      {message ? message : "An Error Occured!"}
+    </Message>
+  </Root>
 );

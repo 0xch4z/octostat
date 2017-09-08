@@ -11,14 +11,15 @@ const Root = styled.View`
   flex-direction: column;
   padding: 15px 0;
   border-bottom-width: 2px;
-  border: #EFEFF2 1px;
+  border-color: #EFEFF2;
 `;
 
 const Avatar = styled.Image`
   height: 100px;
   width: 110px;
   border-radius: 5px;
-  border: 2px #EFEFF2;
+  border-width: 2px;
+  border-color: #EFEFF2;
 `;
 
 const Name = styled.Text`
