@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components/native';
 
 const Root = styled.TouchableOpacity`
@@ -37,13 +37,30 @@ const Handle = styled.Text`
   font-size: 14;
 `;
 
-export default ({ user }) => (
-  <Root>
-    <Left>
-      <Avatar source={{uri: user.avatarUrl}} />
-    </Left>
-    <Right>
-      <Handle>@{user.login}</Handle>
-    </Right>
-  </Root>
-);
+
+class FollowerItem extends PureComponent {
+
+  onPress = () => {
+    const { navigation, user } = this.props;
+    navigation.navigate('Profile', {
+      handle: user.login,
+      login: user.login,
+    });
+  }
+
+  render() {
+    const { user } = this.props;
+    return (
+      <Root onPress={this.onPress}>
+        <Left>
+          <Avatar source={{uri: user.avatarUrl}} />
+        </Left>
+        <Right>
+          <Handle>@{user.login}</Handle>
+        </Right>
+      </Root>
+    );
+  }
+}
+
+export default FollowerItem;
