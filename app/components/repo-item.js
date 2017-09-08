@@ -61,10 +61,10 @@ const RepoItem = ({ repo }) => (
 RepoItem.propTypes = {
   repo: PropTypes.shape({
     nameWithOwner: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
     primaryLanguage: PropTypes.shape({
       name: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
     stargazers: PropTypes.shape({
       totalCount: PropTypes.number.isRequired,
     }).isRequired,

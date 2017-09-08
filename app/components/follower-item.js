@@ -30,7 +30,7 @@ const Avatar = styled.Image`
   height: 50px;
   width: 50px;
   border-radius: 5px;
-  border: 2px solid #EFEFF2;
+  border: 2px #EFEFF2;
 `;
 
 const Handle = styled.Text`

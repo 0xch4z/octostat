@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { StatusBar, Platform } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import { graphql } from 'react-apollo';
 
@@ -18,7 +18,6 @@ const Root = styled.ScrollView`
   display: flex;
   flex-direction: column; 
   height: 100%;
-  font-family: ${ Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto' };
 `;
 
 class Profile extends Component {

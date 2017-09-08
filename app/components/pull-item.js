@@ -51,7 +51,7 @@ const PullItem = ({ pull }) => (
       <Title>
         "{pull.title}"
       </Title>
-      { pull.commits.nodes.map(({ commit }) => <Commit>+= {commit.message}</Commit>) }
+      { pull.commits.nodes.map(({ commit }, i) => <Commit key={i}>+= {commit.message}</Commit>) }
     </Top>
     <Bottom>
       { pull.repository.primaryLanguage ? <Language lang={pull.repository.primaryLanguage.name} /> : null }

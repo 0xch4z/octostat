@@ -39,7 +39,7 @@ const ProfileStat = ({ metric, value, onPress }) => {
 ProfileStat.propTypes = {
   metric: PropTypes.oneOf(['Repos', 'Pulls', 'Followers']).isRequired,
   value: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default ProfileStat;
