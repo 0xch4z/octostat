@@ -5,7 +5,7 @@
     <img src="http://img.youtube.com/vi/6VpBSToQ0uM/0.jpg" alt="Octostat demo video" style="max-width:100%;" />
   </a>
 </p>
-<p align="center"><strong>Click the above image to watch the demo!</strong></p>
+<p align="center"><strong>Click the above image to watch full the demo!</strong></p>
 <h2>Disclamer</h2>
 <p>You've probably noticed the ugly red status bar. This is a result of my screen recorder and <em>not</em> the app. The app is slick IMO. 💫</p>
 <h2>Why?</h2>
