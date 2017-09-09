@@ -69,7 +69,6 @@ class Profile extends Component {
 
   render() {
     if (this.props.data.error) {
-      console.log('ERR: ', this.props.data.error) ;
       return <Error />;
     }
 

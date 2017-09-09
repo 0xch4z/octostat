@@ -18,6 +18,7 @@ const Container = styled.View`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 5px;
 `;
 
 const Top = styled.View`
@@ -62,7 +63,7 @@ export default ({ visible, message, onHidePress }) => {
         <Bottom>
           <Button
             onPress={onHidePress}
-            text="hide"
+            text="Okay"
             width="60%"
             color="#283546"
           />
