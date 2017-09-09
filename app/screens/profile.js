@@ -83,11 +83,11 @@ class Profile extends Component {
     // make pinned repo set
     let repos;
     if (user.pinnedRepositories.totalCount) {
-      repos = user.pinnedRepositories.nodes.slice(0, 5).map((repo) => (
+      repos = user.pinnedRepositories.nodes.map((repo) => (
         <RepoItem key={repo.nameWithOwner} repo={repo} />
       ));
     } else if (user.repositories.totalCount) {
-      repos = user.repositories.nodes.slice(0, 5).map((repo) => (
+      repos = user.repositories.nodes.slice(0, 6).map((repo) => (
         <RepoItem key={repo.nameWithOwner} repo={repo} />
       ));
     } else {
