@@ -8,7 +8,7 @@ const Root = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   padding: 8px 20px;
-  max-width: 60%;
+  min-width: ${props => props.width ? props.width : '40%'};
   border-width: 2px;
   border-color: #fff;
   border-radius: 2;
@@ -21,10 +21,9 @@ const Text = styled.Text`
   color: ${props => props.color};
 `;
 
-const Button = (props) => {
-  const { text, color, onPress } = props;
+const Button = ({ text, color, onPress, width }) => {
   return (
-    <Root onPress={onPress}>
+    <Root onPress={onPress} width={width}>
       <Text color={color}>
         {text}
       </Text>
@@ -40,6 +39,7 @@ Button.propTypes = {
   onPress: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
+  width: PropTypes.string,
 };
 
 export default Button;

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import Svg from 'react-native-svg-uri';
-import { StatusBar } from 'react-native';
+import { StatusBar, Keyboard } from 'react-native';
 
 import Button from '../components/button';
+import ErrorModal from '../components/error-modal';
 
 import Octocat from '../assets/images/octocat';
 
@@ -36,6 +37,8 @@ export default class Main extends Component {
   state = {
     handle: '',
     disabled: true,
+    modalVisible: false,
+    modalMessage: '',
   };
 
   onInputChange = (text) => {
@@ -47,8 +50,30 @@ export default class Main extends Component {
 
   onButtonPress = () => {
     const { handle } = this.state;
+    Keyboard.dismiss();
+    if (!handle) {
+      // the handle field is empty
+      this.setState({
+        modalVisible: true,
+        modalMessage: 'Enter a user\'s handle to continue!',
+      });
+      return;
+    } else if (!/^@?[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,40}$/i.test(handle)) {
+      // the user has entered an invalid username, according to gh's spec
+      this.setState({
+        modalVisible: true,
+        modalMessage: 'Invalid Github handle!',
+      });
+      return;
+    }
     this.props.navigation.navigate('Profile', {
       handle: handle.startsWith('@') ? handle.slice(1) : handle
+    });
+  };
+
+  onModalHidePress = () => {
+    this.setState({
+      modalVisible: false,
     });
   };
 
@@ -72,6 +97,11 @@ export default class Main extends Component {
           onPress={this.onButtonPress}
           text="Get Stats!"
           color="#64b5f6"
+        />
+        <ErrorModal
+          visible={this.state.modalVisible}
+          message={this.state.modalMessage}
+          onHidePress={this.onModalHidePress}
         />
       </Root>
     );
