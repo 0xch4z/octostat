@@ -35,7 +35,6 @@ const Title = styled.Text`
 const CommitNode = styled.View`
   display: flex;
   flex-direction: row;
-  width: 100%;
   margin-left: 10;
 `;
 
