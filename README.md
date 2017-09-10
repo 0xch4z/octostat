@@ -1,6 +1,9 @@
 <h1 align="center"><img src="/ios/octostat/Images.xcassets/AppIcon.appiconset/Octostat.png" height="30">Octostat</h1>
 <p align="center">A React Native application for viewing Github user stats.</p>
 <p align="center">
+  <img src="/assets/banner.png" alt="Octostat feature banner" style="max-width:100%;">
+</p>
+<p align="center">
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=6VpBSToQ0uM" target="_blank">
     <img src="http://img.youtube.com/vi/6VpBSToQ0uM/0.jpg" alt="Octostat demo video" style="max-width:100%;" />
   </a>
