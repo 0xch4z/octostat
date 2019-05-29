@@ -1,3 +1,6 @@
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Charliekenney23/octostat.svg)](https://greenkeeper.io/)
+
 <h1 align="center"><img src="/ios/octostat/Images.xcassets/AppIcon.appiconset/Octostat.png" height="30">Octostat</h1>
 <p align="center">A React Native application for viewing Github user stats.</p>
 <p align="center">
